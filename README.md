@@ -147,3 +147,18 @@ git add .
 git commit -m “bug fix”
 git push origin
 ```
+
+![Figure 6](/docs/figure6.png "Figure 6")
+
+6. We should now see a passing test! Yay congrats.
+
+7. We’ll now continue to our next quality of life enhancement which is adding a GitHub action which will validate our pull request title. The first thing to do is to see if anyone else has made a GitHub action that already does what you want. We will go to https://github.com/marketplace?type=actions&query=pr+title+ to see what kind of GitHub actions have been published. Right away, we can see one here https://github.com/marketplace/actions/pr-title-checker 
+
+8. As a security percaution, always vet the GitHub actions you are using! It's usually safe to assume any GitHub action with the *verified creator* tag is safe to use. 
+
+![Figure 7](/docs/figure7.png "Figure 7")
+
+9. I did some previous research and couldn’t find a simple PR title checker, so I created one myself for this demo which can be found here https://github.com/marketplace/actions/pr-title-validator 
+
+10. Commit and push up the new changes. If everything went well, you should see the new GitHub action test show up alongside the previous unit test GitHub action we implemented. If you have pull_request to also detect edited changes, you can edit the pull request title and see the validator check for issues.
+
