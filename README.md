@@ -164,3 +164,4 @@ git push origin
 
 ![Figure 8](/docs/figure8.png "Figure 8")
 
+For a full working example, check out https://github.com/pragmatic-tools/gh-actions-tutorial/pull/1
