@@ -98,7 +98,7 @@ Create the pull request by pressing the “Compare & pull request” button. If 
 
 This is a good thing because we now confirmed that what we saw locally when we ran npm test matches what we see on GitHub actions. (TODO: If we make Node Optional, this needs to change. Maybe we ask them to figure out what's wrong and go through the logs?)
 
-4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the `app.js` file and replace “Hello Dexcom!” with “Hello World!”.
+4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the `app.js` file and replace “Hello Dexcom!” with “Hello World!”. (If you want to run it locally or run the tests, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions.)
 
 5. Commit the new fix and push.
 
