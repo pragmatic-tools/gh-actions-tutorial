@@ -22,17 +22,16 @@ One of the greatest benefits from GitHub actions is their native implementation 
 
 ## III. Ok cool, so how do I start getting value from this tool?
 
-The best way to figure out what GitHub actions can do for your team is to go through some examples. Today, we’ll be creating two GitHub actions which will (1) run unit tests and report them back on each push event (e.g. commit to a pull request) (2) run a validator that will check for an arbitrarily team defined convention for pull request titles.
+The best way to figure out what GitHub actions can do for your team is to go through some examples. Today, we’ll be creating two GitHub actions which will:
+
+1. ✅ Run unit tests and report them back on each push event (e.g. commit to a pull request)
+2. ✅ Run a validator that will check for an arbitrarily team defined convention for pull request titles.
 
 __Pre-requisites__
 * Quicknote: All of these were tested on macOS, so there’s no guarantee it will work for Windows OS.
 
 1. Have a GitHub account
-2. Have node installed on your computer https://nodejs.org/en/download/
-    - This could also be installed using HomeBrew
-        - To install HomeBrew, visit https://docs.brew.sh/Installation
-        - Run `brew install node`
-4. Clone the repository https://github.com/pragmatic-tools/gh-actions-tutorial.git into your local workspace. 
+2. Clone the repository https://github.com/pragmatic-tools/gh-actions-tutorial.git into your local workspace. 
 
 __HTTPS__
 ```bash
@@ -43,59 +42,19 @@ __SSH__
 git clone git@github.com:pragmatic-tools/gh-actions-tutorial.git
 ```
 
-5. Create a new branch and switch to it
+3. Create a new branch and switch to it
 
 ```bash
 git checkout -b gh-actions-lesson-<your-initials>
 ```
 
-6. Navigate into the directory gh-actions-tutorial and be sure you’re in the directory where you can see the file package.json.
+4. Navigate into the directory `gh-actions-tutorial` and be sure you’re in the directory where you can see the file package.json.
 
-7. Run npm install. If everything goes well, you will find a **node_modules** folder created. This contains all of your application dependencies.
+## Creating a Github Action to Run Unit Tests
 
-__Action Plan__
+After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file app.js which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser. If you want to run the app the tests locally, go to the [App Installation](./doc/APP_INSTALLATION.md) link for instructions, but it's not necessary to this lesson to do.
 
-After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file app.js which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser.
-
-1. Run the following command
-```bash
-npm start
-```
-
-You’ll see something like the following
-```bash
-> github-actions-lesson@1.0.0 start
-> node server.js
-
-Listening on port 5000 
-```
-
-This will indicate that a webserver has been started and you can now visit the website on a browser at http://localhost:5000. Once you visit, you should see some text that says ‘Hello Dexcom!’. *Note*: If port 5000 does not work, you can change the port in the server.js file.
-
-2. Stop the server by either pressing Ctrl + C or closing the terminal.
-
-3. Run the following command
-```bash
-npm test
-```
-
-You should get something like the following
-```bash
-  GET /
-    1) displays "Hello World!"
-
-
-  0 passing (19ms)
-  1 failing
-
-  1) GET /
-       displays "Hello World!":
-     Error: expected 'Hello World!' response body, got 'Hello Dexcom!'
-```
-
-We will fix this unit test later, but for now, let’s leave it as is.
-
-4. Now that we know our app runs and we know how to run tests, let’s make a GitHub action that will run our unit tests for us each time we create and push a new commit. If you go to the directory `./.github/workflows` within the repository, you should see a file named `unit_tests.yml`. This is where we’ll configure our action.
+If you go to the directory [`./.github/workflows`](./.github/workflows) within the repository, you should see a file named [`unit_tests.yml`](./github/workflows/unit_tests.yml). This is where we’ll configure our action.
 
 ![Figure 2](/docs/figure2.png "Figure 2")
 
@@ -126,8 +85,7 @@ git commit -m “my first github action”
 git push --set-upstream origin <your branch name>
 ```
 
-You should see something like the following at 
-https://github.com/pragmatic-tools/gh-actions-tutorial
+Open the Github repo at https://github.com/pragmatic-tools/gh-actions-tutorial, and should see something like the following at: 
 
 ![Figure 3](/docs/figure3.png "Figure 3")
 
@@ -136,7 +94,7 @@ Create the pull request by pressing the “Compare & pull request” button. If 
 ![Figure 4](/docs/figure4.png "Figure 4")
 ![Figure 5](/docs/figure5.png "Figure 5")
 
-This is a good thing because we now confirmed that what we saw locally when we ran npm test matches what we see on GitHub actions.
+This is a good thing because we now confirmed that what we saw locally when we ran npm test matches what we see on GitHub actions. (TODO: If we make Node Optional, this needs to change. Maybe we ask them to figure out what's wrong and go through the logs?)
 
 4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the app.js file and replace “Hello Dexcom!” with “Hello World!”.
 
@@ -152,15 +110,17 @@ git push origin
 
 6. We should now see a passing test! Yay congrats.
 
-7. We’ll now continue to our next quality of life enhancement which is adding a GitHub action which will validate our pull request title. The first thing to do is to see if anyone else has made a GitHub action that already does what you want. We will go to https://github.com/marketplace?type=actions&query=pr+title+ to see what kind of GitHub actions have been published. Right away, we can see one here https://github.com/marketplace/actions/pr-title-checker 
+## Creating a Github Action to Validate Pull Request Titles
 
-8. As a security percaution, always vet the GitHub actions you are using! It's usually safe to assume any GitHub action with the *verified creator* tag is safe to use. 
+1. We’ll now continue to our next quality of life enhancement which is adding a GitHub action which will validate our pull request title. The first thing to do is to see if anyone else has made a GitHub action that already does what you want. We will go to https://github.com/marketplace?type=actions&query=pr+title+ to see what kind of GitHub actions have been published. Right away, we can see one here https://github.com/marketplace/actions/pr-title-checker 
+
+2. As a security percaution, always vet the GitHub actions you are using! It's usually safe to assume any GitHub action with the *verified creator* tag is safe to use. 
 
 ![Figure 7](/docs/figure7.png "Figure 7")
 
-9. I did some previous research and couldn’t find a simple PR title checker, so I created one myself for this demo which can be found here https://github.com/marketplace/actions/pr-title-validator 
+3. I did some previous research and couldn’t find a simple PR title checker, so I created one myself for this demo which can be found here https://github.com/marketplace/actions/pr-title-validator 
 
-10. Commit and push up the new changes. If everything went well, you should see the new GitHub action test show up alongside the previous unit test GitHub action we implemented. If you have pull_request to also detect edited changes, you can edit the pull request title and see the validator check for issues.
+4. Commit and push up the new changes. If everything went well, you should see the new GitHub action test show up alongside the previous unit test GitHub action we implemented. If you have pull_request to also detect edited changes, you can edit the pull request title and see the validator check for issues.
 
 ![Figure 8](/docs/figure8.png "Figure 8")
 
