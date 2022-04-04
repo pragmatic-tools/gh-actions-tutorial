@@ -162,3 +162,5 @@ git push origin
 
 10. Commit and push up the new changes. If everything went well, you should see the new GitHub action test show up alongside the previous unit test GitHub action we implemented. If you have pull_request to also detect edited changes, you can edit the pull request title and see the validator check for issues.
 
+![Figure 8](/docs/figure8.png "Figure 8")
+
