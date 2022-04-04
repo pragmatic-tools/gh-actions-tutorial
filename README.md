@@ -28,33 +28,35 @@ The best way to figure out what GitHub actions can do for your team is to go thr
 2. ✅ Run a validator that will check for an arbitrarily team defined convention for pull request titles.
 
 __Pre-requisites__
-* Quicknote: All of these were tested on macOS, so there’s no guarantee it will work for Windows OS.
+
+Quicknote: All of these were tested on macOS, so there’s no guarantee it will work for Windows OS.
 
 1. Have a GitHub account
 2. Clone the repository https://github.com/pragmatic-tools/gh-actions-tutorial.git into your local workspace. 
 
-__HTTPS__
-```bash
-git clone https://github.com/pragmatic-tools/gh-actions-tutorial.git
-```
-__SSH__
-```bash
-git clone git@github.com:pragmatic-tools/gh-actions-tutorial.git
-```
+    __HTTPS__
+    ```bash
+    git clone https://github.com/pragmatic-tools/gh-actions-tutorial.git
+    ```
+    __SSH__
+    ```bash
+    git clone git@github.com:pragmatic-tools/gh-actions-tutorial.git
+    ```
 
-3. Create a new branch and switch to it
+3. Navigate to the directory, create a new branch and switch to it
 
-```bash
-git checkout -b gh-actions-lesson-<your-initials>
-```
+    ```bash
+    cd gh-actions-tutorial
+    git checkout -b gh-actions-lesson-<your-initials>
+    ```
 
-4. Navigate into the directory `gh-actions-tutorial` and be sure you’re in the directory where you can see the file package.json.
+4. Navigate into the directory `gh-actions-tutorial` and be sure you’re in the directory where you can see the file `package.json`.
 
 ## Creating a Github Action to Run Unit Tests
 
-After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file app.js which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser. If you want to run the app the tests locally, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions, but it's not necessary to this lesson to do.
+After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file `app.js` which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser. If you want to run the app the tests locally, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions, but it's not necessary to this lesson to do.
 
-If you go to the directory [`./.github/workflows`](./.github/workflows) within the repository, you should see a file named [`unit_tests.yml`](./github/workflows/unit_tests.yml). This is where we’ll configure our action.
+If you go to the directory [`.github/workflows`](.github/workflows) within the repository, you should see a file named [`unit_tests.yml`](.github/workflows/unit_tests.yml). This is where we’ll configure our action.
 
 ![Figure 2](/docs/figure2.png "Figure 2")
 
@@ -96,7 +98,7 @@ Create the pull request by pressing the “Compare & pull request” button. If 
 
 This is a good thing because we now confirmed that what we saw locally when we ran npm test matches what we see on GitHub actions. (TODO: If we make Node Optional, this needs to change. Maybe we ask them to figure out what's wrong and go through the logs?)
 
-4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the app.js file and replace “Hello Dexcom!” with “Hello World!”.
+4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the `app.js` file and replace “Hello Dexcom!” with “Hello World!”.
 
 5. Commit the new fix and push.
 
