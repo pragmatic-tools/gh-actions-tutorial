@@ -133,3 +133,17 @@ https://github.com/pragmatic-tools/gh-actions-tutorial
 
 Create the pull request by pressing the “Compare & pull request” button. If everything goes well, we should see something like the following where our unit test ran but failed. We can click on the “Details” tab to see why it failed.
 
+![Figure 4](/docs/figure4.png "Figure 4")
+![Figure 5](/docs/figure5.png "Figure 5")
+
+This is a good thing because we now confirmed that what we saw locally when we ran npm test matches what we see on GitHub actions.
+
+4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the app.js file and replace “Hello Dexcom!” with “Hello World!”.
+
+5. Commit the new fix and push.
+
+```bash
+git add .
+git commit -m “bug fix”
+git push origin
+```
