@@ -52,7 +52,7 @@ git checkout -b gh-actions-lesson-<your-initials>
 
 ## Creating a Github Action to Run Unit Tests
 
-After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file app.js which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser. If you want to run the app the tests locally, go to the [App Installation](./doc/APP_INSTALLATION.md) link for instructions, but it's not necessary to this lesson to do.
+After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file app.js which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser. If you want to run the app the tests locally, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions, but it's not necessary to this lesson to do.
 
 If you go to the directory [`./.github/workflows`](./.github/workflows) within the repository, you should see a file named [`unit_tests.yml`](./github/workflows/unit_tests.yml). This is where we’ll configure our action.
 
