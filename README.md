@@ -50,13 +50,16 @@ Quicknote: All of these were tested on macOS, so there’s no guarantee it will 
     git checkout -b gh-actions-lesson-<your-initials>
     ```
 
-4. Navigate into the directory `gh-actions-tutorial` and be sure you’re in the directory where you can see the file `package.json`.
-
 ## Creating a Github Action to Run Unit Tests
 
 After getting all our environment setup, let’s explore what this code base is. The bulk of the application is contained in the file `app.js` which has one endpoint that will show ‘Hello Dexcom!’ when you navigate to it from the browser. If you want to run the app the tests locally, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions, but it's not necessary to this lesson to do.
 
 If you go to the directory [`.github/workflows`](.github/workflows) within the repository, you should see a file named [`unit_tests.yml`](.github/workflows/unit_tests.yml). This is where we’ll configure our action.
+
+Our goal here is the following
+1. Have GitHub actions install npm
+2. Have GitHub actions run our unit tests (e.g. `npm test`)
+3. Refer to the [App Installation](./docs/APP_INSTALLATION.md) documentation to get an idea of the steps we'd need to replicate on the VM GitHub actons is running on
 
 ![Figure 2](/docs/figure2.png "Figure 2")
 
@@ -96,9 +99,9 @@ Create the pull request by pressing the “Compare & pull request” button. If 
 ![Figure 4](/docs/figure4.png "Figure 4")
 ![Figure 5](/docs/figure5.png "Figure 5")
 
-This is a good thing because we now confirmed that what we saw locally when we ran npm test matches what we see on GitHub actions.
+This is a good thing because we now confirmed GitHub actions is running as we expected.
 
-4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the `app.js` file and replace “Hello Dexcom!” with “Hello World!”. (If you want to run it locally or run the tests, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions.)
+4. Ok, let’s fix this now. If we read the unit test report, it states that our test is expecting the phrase “Hello World!”, but it’s getting “Hello Dexcom!”. Go to the `app.js` file and replace “Hello Dexcom!” with “Hello World!”. (If you want to run/debug it locally or run the tests, go to the [App Installation](./docs/APP_INSTALLATION.md) link for instructions.)
 
 5. Commit the new fix and push.
 
