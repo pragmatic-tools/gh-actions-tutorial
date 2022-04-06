@@ -4,5 +4,11 @@ jobs:
   run-node-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: npm install
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
       - run: npm test
