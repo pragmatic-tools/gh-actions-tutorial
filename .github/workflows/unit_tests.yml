@@ -9,5 +9,4 @@ jobs:
         with:
           node-version: '14'
       - run: npm install -g mocha
-      - run: mocha -v
       - run: npm test
