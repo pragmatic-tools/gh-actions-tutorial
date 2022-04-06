@@ -1,1 +1,7 @@
 name: Unit Tests
+on: [push]
+jobs:
+  run-node-tests:
+    steps:
+      - run: npm install
+      - run: npm test
