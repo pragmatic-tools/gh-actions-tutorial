@@ -4,7 +4,7 @@ jobs:
   Run-Unit-Tests:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Job was successfully started?"
+      - run: echo "Job was successfully started??"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
