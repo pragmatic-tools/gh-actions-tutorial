@@ -4,9 +4,11 @@ on:
     types: [opened, reopened, synchronize, edited]
 
 jobs:
-  require-valid-pr-title:
+  title-validation:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Validate PR Title
       - uses: pragmatic-tools/pr-title-validator@1.0.0
         with:
           pattern: 'JIRA-\d+.*'
