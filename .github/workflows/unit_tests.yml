@@ -1,1 +1,17 @@
 name: Unit Tests
+on: [push]
+jobs:
+  run-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+     - name: Check out repository code
+       uses: actions/checkout@v3
+     - name: Setup node
+       uses: actions/setup-node@v3
+       with:
+         node-version: '14'
+     - run: echo "Triggering npm install next."
+     - run: npm install
+     - run: echo "Running unit tests."
+     - run: npm test
