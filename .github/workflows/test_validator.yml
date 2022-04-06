@@ -1,4 +1,4 @@
-name: `Pull Request Title Validator`
+name: `My Pull Request Title Validator`
 on:
   pull_request:
     types: 
